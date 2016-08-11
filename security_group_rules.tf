@@ -21,7 +21,6 @@ resource "aws_security_group_rule" "core_to_s3-vpce_egress" {
   protocol          = "tcp"
   from_port         = 443
   to_port           = 443
-  # This should eventually come from remote state, not top level variables
-  prefix_list_ids   = ["${var.s3_vpce-prefix_list_id}"]
+  prefix_list_ids   = ["${aws_vpc_endpoint.s3.prefix_list_id}"]
   security_group_id = "${aws_security_group.core.id}"
 }
