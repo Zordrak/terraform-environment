@@ -16,8 +16,7 @@ module "ha-nat" {
 }
 
 resource "aws_route_table_association" "ha-nat_public" {
-  # This count is a manual count of the cidr array passed to the module until Hashicorp implement JIT count interpolation
-  count          = "3"
+  count          = "${var.region_az_count}"
   subnet_id      = "${module.ha-nat.subnet_ids[count.index]}"
   route_table_id = "${aws_route_table.public.id}"
 }

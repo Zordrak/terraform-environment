@@ -20,8 +20,7 @@ module "microservice_pritest" {
 }
 
 resource "aws_route_table_association" "pritest_private-nat" {
-  # This count is a manual count of the cidr array passed to the module until Hashicorp implement JIT count interpolation
-  count          = 3
+  count          = "${var.region_az_count}"
   subnet_id      = "${module.microservice_pritest.subnet_ids[count.index]}"
   route_table_id = "${element(aws_route_table.private_nats.*.id, count.index)}"
 }
