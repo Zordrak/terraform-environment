@@ -35,11 +35,6 @@ variable "internet_gateway_id" {
   description = "$${aws_internet_gateway.internet_gateway.id}"
 }
 
-variable "s3_vpce-prefix_list_id" {
-  type        = "string"
-  description = "$${aws_vpc_endpoint.vpc_endpoint.prefix_list_id}"
-}
-
 variable "bootstrap_public_route_table_id" {
   type        = "string"
   description = "$${aws_route_table.bootstrap_public.id}"
