@@ -9,7 +9,7 @@ module "microservice_pritest" {
   name                            = "pritest"
   subnets_cidr                    = ["10.10.10.0/24", "10.10.20.0/24", "10.10.30.0/24"]
   subnets_map_public_ip_on_launch = false
-  subnets_route_tables            = ["${aws_route_table.private-nats.*.id}"]
+  subnets_route_tables            = ["${aws_route_table.private_nats.*.id}"]
   vpc_id                          = "${var.vpc_id}"
 
   tags {
@@ -19,8 +19,10 @@ module "microservice_pritest" {
   }
 }
 
-aws_route_table "private-nats" {
-  count = "${length(data.aws_availability_zones.available.names)}"
+resource "aws_route_table" "private_nats" {
+  # https://github.com/hashicorp/terraform/issues/1497
+  #count = "${length(data.aws_availability_zones.available.names)}"
+  count = 3
   vpc_id = "${var.vpc_id}"
   tags {
     Environment = "${var.environment}"
@@ -29,7 +31,7 @@ aws_route_table "private-nats" {
   } 
 }
 
-aws_route_table "private-nonat" {
+resource "aws_route_table" "private_nonat" {
   vpc_id = "${var.vpc_id}"
   tags {
     Environment = "${var.environment}"
@@ -38,7 +40,7 @@ aws_route_table "private-nonat" {
   } 
 }
 
-aws_route_table "public" {
+resource "aws_route_table" "public" {
   vpc_id = "${var.vpc_id}"
   tags {
     Environment = "${var.environment}"
