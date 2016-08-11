@@ -1,5 +1,6 @@
 module "microservice_pritest" {
   source                          = "github.com/Zordrak/terraform-microservice.git"
+  additional_security_group_ids   = ["${aws_security_group.core.id}"]
   asg_size_max                    = "3"
   asg_size_min                    = "3"
   availability_zones              = "${data.aws_availability_zones.available.names}"
