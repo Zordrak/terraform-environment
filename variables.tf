@@ -47,3 +47,15 @@ variable "example_bucket_name" {
   description = "Example Bucket for an example microservice to do example things with"
   default     = "testbucket"
 }
+
+### Playing about ###
+
+variable "peer_matrix" {
+  type = "list"
+  default = []
+}
+
+variable "peering_connections" {
+  type = "list"
+  default = []
+}
