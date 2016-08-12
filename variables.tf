@@ -39,3 +39,11 @@ variable "bootstrap_public_route_table_id" {
   type        = "string"
   description = "$${aws_route_table.bootstrap_public.id}"
 }
+
+### These are for an example of a specific bucket for a specific purpose ###
+
+variable "example_bucket_name" {
+  type        = "string"
+  description = "Example Bucket for an example microservice to do example things with"
+  default     = "testbucket"
+}
