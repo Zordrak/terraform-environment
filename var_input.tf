@@ -13,13 +13,13 @@ variable "vpc_id" {
 variable "environment" {
   type        = "string"
   description = "Environment Name"
-  default     = "testenv"
+  default     = "ENV"
 }
 
 variable "project" {
   type        = "string"
   description = "Project Name"
-  default     = "testproj"
+  default     = "PROJ"
 }
 
 variable "region_az_count" {
@@ -38,4 +38,21 @@ variable "internet_gateway_id" {
 variable "bootstrap_public_route_table_id" {
   type        = "string"
   description = "$${aws_route_table.bootstrap_public.id}"
+}
+
+### Microservice configuration ###
+variable "microservice_consul-1" {
+  type = "map"
+  default {
+    ami_id        = "ami-00000000000000000"
+    instance_type = "t2.micro"
+    asg_size_min  = "1"
+    asg_size_max  = "1"
+    tier          = "PRI"
+    map_public_ip = "false"
+  }
+}
+variable "consul-1_subnets_cidr" {
+  type = "list"
+  default = ["10.0.10.0/24"]
 }
