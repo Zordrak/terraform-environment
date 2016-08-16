@@ -11,6 +11,7 @@
 # So for now, this is being defined here. The bootstrap modules public route table will be passed in as a variable so the VPC Endpoint can include it
 
 resource "aws_vpc_endpoint" "s3" {
+  #count        = "${replace(replace(var.example_bucket_name,"/.+/","1"),"/^$/","0")}"
   vpc_id       = "${var.vpc_id}"
   service_name = "com.amazonaws.${var.aws_region}.s3"
 
