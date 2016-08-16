@@ -1,5 +1,5 @@
 module "ha-nat" {
-  source               = "github.com/Zordrak/terraform-ha-nat.git"
+  source               = "github.com/cartest/terraform-ha-nat.git"
   availability_zones   = "${data.aws_availability_zones.available.names}"
   aws_region           = "${var.aws_region}"
   gateway_route_tables = ["${aws_route_table.private_nats.*.id}"]

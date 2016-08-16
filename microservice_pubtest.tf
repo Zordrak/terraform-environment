@@ -1,5 +1,5 @@
 module "microservice_pubtest" {
-  source                          = "github.com/Zordrak/terraform-microservice.git"
+  source                          = "github.com/cartest/terraform-microservice.git"
   asg_size_max                    = "3"
   asg_size_min                    = "3"
   availability_zones              = "${data.aws_availability_zones.available.names}"
