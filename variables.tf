@@ -16,20 +16,6 @@ variable "environment" {
   default     = "testenv"
 }
 
-variable "peer_matrix" {
-  type        = "list"
-  default     = []
-  #   "0123456789012,vpc-01234567890123456,10.99.0.0/16",
-  #   "2109876543210,vpc-65432109876543210,172.16.0.0/16"
-  # ]
-  description = "List of peering partner tuples (['peer_aws_account_id,peer_vpc_id,peer_cidr_block']) with which to create vpc peering connections"
-}
-
-variable "peering_connections" {
-  type = "list"
-  default = []
-}
-
 variable "project" {
   type        = "string"
   description = "Project Name"
@@ -49,15 +35,17 @@ variable "internet_gateway_id" {
   description = "$${remote_state.aws_internet_gateway.internet_gateway.id}"
 }
 
-variable "bootstrap_public_route_table_id" {
+variable "private_nat_route_table_ids" {
   type        = "string"
-  description = "$${remote_state.aws_route_table.bootstrap_public.id}"
+  description = "[$${remote_state.aws_route_table.private_nats.*.id}]"
 }
 
-### This is an example of a specific bucket for a specific purpose ###
-
-variable "example_bucket_name" {
+variable "private_nonat_route_table_id" {
   type        = "string"
-  description = "Example Bucket for an example microservice to do example things with"
-  default     = "" #testbucket"
+  description = "$${remote_state.aws_route_table.private-nonat.id}"
+}
+
+variable "public_route_table_id" {
+  type        = "string"
+  description = "$${remote_state.aws_route_table.public.id}"
 }
