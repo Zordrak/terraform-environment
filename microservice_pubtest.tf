@@ -18,9 +18,3 @@
 #     Tier        = "PUB"
 #   }
 # }
-
-# resource "aws_route_table_association" "pritest_public" {
-#   count          = "${var.region_az_count}"
-#   subnet_id      = "${module.microservice_pritest.subnet_ids[count.index]}"
-#   route_table_id = "${aws_route_table.public.id}"
-# }
