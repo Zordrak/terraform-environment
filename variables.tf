@@ -46,12 +46,12 @@ variable "region_az_count" {
 
 variable "internet_gateway_id" {
   type        = "string"
-  description = "$${aws_internet_gateway.internet_gateway.id}"
+  description = "$${remote_state.aws_internet_gateway.internet_gateway.id}"
 }
 
 variable "bootstrap_public_route_table_id" {
   type        = "string"
-  description = "$${aws_route_table.bootstrap_public.id}"
+  description = "$${remote_state.aws_route_table.bootstrap_public.id}"
 }
 
 ### This is an example of a specific bucket for a specific purpose ###
