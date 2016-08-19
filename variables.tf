@@ -7,19 +7,17 @@ variable "aws_region" {
 variable "vpc_id" {
   type        = "string"
   description = "Parent VPC ID"
-  default     = "vpc-00000000000000000"
+  default     = ""
 }
 
 variable "environment" {
   type        = "string"
   description = "Environment Name"
-  default     = "testenv"
 }
 
 variable "project" {
   type        = "string"
   description = "Project Name"
-  default     = "testproj"
 }
 
 variable "region_az_count" {
@@ -36,22 +34,22 @@ variable "bucket_name" {
 
 ### The following are here temporarily until invoked via remote state access to the bootstrap module ###
 
-variable "internet_gateway_id" {
-  type        = "string"
-  description = "$${remote_state.aws_internet_gateway.internet_gateway.id}"
-}
+# variable "internet_gateway_id" {
+#   type        = "string"
+#   description = "$${remote_state.aws_internet_gateway.internet_gateway.id}"
+# }
 
-variable "private_nat_route_table_ids" {
-  type        = "list"
-  description = "[$${remote_state.aws_route_table.private_nats.*.id}]"
-}
+# variable "private_nat_route_table_ids" {
+#   type        = "list"
+#   description = "[$${remote_state.aws_route_table.private_nats.*.id}]"
+# }
 
-variable "private_nonat_route_table_id" {
-  type        = "string"
-  description = "$${remote_state.aws_route_table.private-nonat.id}"
-}
+# variable "private_nonat_route_table_id" {
+#   type        = "string"
+#   description = "$${remote_state.aws_route_table.private-nonat.id}"
+# }
 
-variable "public_route_table_id" {
-  type        = "string"
-  description = "$${remote_state.aws_route_table.public.id}"
-}
+# variable "public_route_table_id" {
+#   type        = "string"
+#   description = "$${remote_state.aws_route_table.public.id}"
+# }
