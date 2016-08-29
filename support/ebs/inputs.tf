@@ -4,7 +4,7 @@ variable "mod_ebs_name" {
   description = "Usually is your hostname for the instance"
   default = ""
 }
-variable "ebs_is_encrypt" {
+variable "mod_ebs_is_encrypt" {
   type = "string"
   description = "should the volume need to be encrypted"
   default = false
@@ -54,4 +54,5 @@ variable "mod_ebs_mp" {
 variable "mod_ebs_inst_id" {
   type = "string"
   description = "specift instance_id which will have volume attached or created/attacged"
+  default = ""
 }
