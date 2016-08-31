@@ -1,3 +1,5 @@
+# THIS REPO IS DEPRECATED. PLEASE SEE PER-PROJECT FORKS.
+
 # terraform-environment
 Environment terraform module
 
