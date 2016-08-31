@@ -17,5 +17,6 @@ module "create_ebs" {
   source = "support/ebs"
   mod_ebs_name = "test"
   mod_ebs_size = "50"
-  mod_ebs_type = "io1"
+  mod_ebs_type = "gp2"
+  mod_ebs_mp   = "/srv/test"
 }
