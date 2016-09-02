@@ -12,6 +12,7 @@ module "microservice_pritest" {
   subnets_map_public_ip_on_launch = false
   subnets_route_tables            = ["${aws_route_table.private_nats.*.id}"]
   vpc_id                          = "${var.vpc_id}"
+  user_data_template		  = "microservice_pritest.sh"  
 
   tags {
     Environment = "${var.environment}"
