@@ -1,4 +1,7 @@
 #EBS creation related
+variable "mod_ebs_count" {
+  default = "1"
+}
 variable "mod_ebs_name" {
   type = "string"
   description = "Usually is your hostname for the instance"
