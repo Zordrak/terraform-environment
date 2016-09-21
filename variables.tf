@@ -34,16 +34,26 @@ variable "bucket_name" {
   default     = ""
 }
 
+variable "private_nat_route_table_ids" {
+   type        = "string"
+   description = "[$${remote_state.aws_route_table.private_nats.*.id}]"
+ }
+
+variable "ebs_matrix" {
+  type	       = "list"
+  description  = "  nodetype,index,mountpoint,device,size,encrypted,snapshot_id,tag::ENV,tag::APP,tag:Tier,tag::Role,"
+  default      = [
+  "nexus,/srv,dev/sdf,50,1,",
+  "nexus,/opt,dev/sdg,50,1,",
+  "jenkins,/var/lib,dev/sdf,300,1,",
+  "yum,/srv,dev/sdf,300,1,snap-12345678"
+  ]
+}
 ### The following are here temporarily until invoked via remote state access to the bootstrap module ###
 
 # variable "internet_gateway_id" {
 #   type        = "string"
 #   description = "$${remote_state.aws_internet_gateway.internet_gateway.id}"
-# }
-
-# variable "private_nat_route_table_ids" {
-#   type        = "string"
-#   description = "[$${remote_state.aws_route_table.private_nats.*.id}]"
 # }
 
 # variable "private_nonat_route_table_id" {
