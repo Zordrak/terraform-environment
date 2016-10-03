@@ -52,8 +52,13 @@ variable "mod_ebs_role" {
   description = "used for tags, Role tag"
   default = ""
 }
-variable "mod_ebs_mp"
+variable "mod_ebs_mp" {
   type = "string"
   description = "specify mountpoint for the volume, it can be anything except for / scope" 
   default = ""
+}
+variable "mod_ebs_dev" {
+  type = "string"
+  description = "specify device name to be attached in devices folder" 
+  default = "sdf"
 }
